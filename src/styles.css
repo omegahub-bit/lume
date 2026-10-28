@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #080808;
+  --color-surface: #111111;
+  --color-elevated: #181818;
+  --color-fg: #f3eee6;
+  --color-muted: #9a948c;
+  --color-subtle: #6f6a64;
+  --color-accent: #e8ddd0;
+  --color-accent-fg: #0c0c0c;
+  --color-border: color-mix(in oklab, #f3eee6 14%, transparent);
+  --color-border-strong: color-mix(in oklab, #f3eee6 28%, transparent);
+  --color-danger: #c45c4a;
+  --color-success: #7d9a7e;
+
+  --font-sans: "Outfit", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", "Times New Roman", serif;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --text-display: clamp(3.25rem, 9vw, 8rem);
+  --text-title: clamp(2rem, 4.5vw, 3.75rem);
+  --text-section: clamp(1.5rem, 2.6vw, 2.25rem);
+  --aspect-poster: 3 / 4;
+  --aspect-photo: 4 / 3;
+  --aspect-tall: 4 / 5;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-fg);
+  }
+
+  input,
+  textarea,
+  select {
+    color-scheme: dark;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .kicker {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .hairline {
+    border-color: var(--color-border);
+  }
+
+  .page-gutter {
+    padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
